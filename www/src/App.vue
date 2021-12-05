@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import RESTVue from './components/REST.vue'
-import WebSocketVue from './components/WebSocket.vue';
+import RESTVue from "./components/REST.vue";
+import WebSocketVue from "./components/WebSocket.vue";
+
+const o = window.origin;
 </script>
 
 <template>
-<h1>Sample Hobby App</h1>
+  <h1>Sample Hobby App</h1>
   <RESTVue resturl="RESTURL" />
   <WebSocketVue websocketurl="WEBSOCKETURL" />
+  <p>Origin: {{ o }}</p>
 </template>
 
 <style>

@@ -1,17 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
-defineProps<{ websocketurl: string }>()
+defineProps<{ websocketurl: string }>();
 
-const count = ref(0)
+const x = ref(Math.round(Math.random() * 100)),
+  y = ref(Math.round(Math.random() * 10)),
+  z = ref(0),
+  clock = ref(0);
 </script>
 
 <template>
   <h2>websocketurl:{{ websocketurl }}</h2>
-
-  
-
-  <button type="button" @click="count++">count is: {{ count }}</button>
+  <h3>Clock:{{ clock }}</h3>
+  <div>x:<input type="number" :value="x" /></div>
+  <div>y:<input type="number" :value="y" /></div>
+  <h3>z:{{ z }}</h3>
+  <button type="button" @click="z = x + y">Add</button>
+  <button type="button" @click="z = x - y">Subtract</button>
 </template>
 
 <style scoped>
@@ -29,5 +34,9 @@ code {
   padding: 2px 4px;
   border-radius: 4px;
   color: #304455;
+}
+
+input {
+  width: 3em;
 }
 </style>
