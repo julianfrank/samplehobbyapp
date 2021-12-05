@@ -21,9 +21,9 @@ normal=$(tput sgr0)
 # My code
 if [ ${machineos} == "Linux" ]
 then
-    echo "[✅] You are on ${machineos}"
+    echo "[✅] You are on $(uname -v)${machineos}"
 else
-    echo "[🚧] ${machineos} Not Supported. Check for Pre-requisites manually"
+    echo "[🚧] $(uname -v)${machineos} Not Supported. Check for Pre-requisites manually"
     exit
 fi
 
