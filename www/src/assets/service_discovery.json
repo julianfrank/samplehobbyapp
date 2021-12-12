@@ -1,0 +1,8 @@
+{
+  "dev": {
+    "www": "https://localhost:8080"
+  },
+  "prod": {
+    "www": "https://localhost:8080"
+  }
+}

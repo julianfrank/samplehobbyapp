@@ -6,7 +6,7 @@ defineProps<{ websocketurl: string }>();
 const x = ref(Math.round(Math.random() * 100)),
   y = ref(Math.round(Math.random() * 10)),
   z = ref(0),
-  clock = ref(0);
+  clock = ref(new Date());
 </script>
 
 <template>

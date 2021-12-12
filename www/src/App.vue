@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import RESTVue from "./components/REST.vue";
 import WebSocketVue from "./components/WebSocket.vue";
+import service_discovery from "./assets/service_discovery.json";
 
 const o = window.origin;
 </script>
@@ -10,6 +11,9 @@ const o = window.origin;
   <RESTVue resturl="RESTURL" />
   <WebSocketVue websocketurl="WEBSOCKETURL" />
   <p>Origin: {{ o }}</p>
+  <p>
+    Service Discovery: <code>{{ service_discovery }}</code>
+  </p>
 </template>
 
 <style>
