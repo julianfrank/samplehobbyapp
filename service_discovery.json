@@ -1,0 +1,18 @@
+{
+  "dev": {
+    "www": "https://localhost:8080",
+    "api": "http://localhost:8443",
+    "add": "http://localhost:8001",
+    "sub": "http://localhost:8002",
+    "pubsub": "http://localhost:8088",
+    "clock": "http://localhost:8003"
+  },
+  "prod": {
+    "www": "https://localhost:8080",
+    "api": "http://localhost:8443",
+    "add": "http://localhost:8001",
+    "sub": "http://localhost:8002",
+    "pubsub": "http://localhost:8088",
+    "clock": "http://localhost:8003"
+  }
+}

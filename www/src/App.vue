@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import RESTVue from "./components/REST.vue";
 import WebSocketVue from "./components/WebSocket.vue";
-import service_discovery from "./assets/service_discovery.json";
+import service_discovery from "../../service_discovery.json";
 
 const o = window.origin;
 </script>

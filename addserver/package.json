@@ -1,0 +1,17 @@
+{
+  "name": "addserver",
+  "version": "1.0.0",
+  "description": "ADD Server",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js"
+  },
+  "keywords": [
+    "add"
+  ],
+  "author": "Julian Frank",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pubsubserver",
+  "version": "1.0.0",
+  "description": "PUBSUB Server",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js"
+  },
+  "keywords": [
+    "pubsub"
+  ],
+  "author": "Julian Frank",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

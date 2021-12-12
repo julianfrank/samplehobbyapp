@@ -1,10 +1,10 @@
 const express = require("express"),
   service_discovery = require("../service_discovery.json");
 const app = express(),
-  PORT = 8443 || process.env.PORT;
+  PORT = 8003 || process.env.PORT;
 
 app.get("/", function (req, res) {
-  res.json(service_discovery);
+  res.json({ clock: service_discovery });
 });
 
-app.listen(PORT, () => console.log(`API Server running on ${PORT}`));
+app.listen(PORT, () => console.log(`CLOCK Server running on ${PORT}`));

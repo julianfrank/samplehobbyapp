@@ -1,0 +1,17 @@
+{
+  "name": "clockserver",
+  "version": "1.0.0",
+  "description": "CLOCK Server",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js"
+  },
+  "keywords": [
+    "clock"
+  ],
+  "author": "Julian Frank",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
