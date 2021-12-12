@@ -1,0 +1,17 @@
+{
+  "name": "apiserver",
+  "version": "1.0.0",
+  "description": "API Server",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "Julian Frank",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
