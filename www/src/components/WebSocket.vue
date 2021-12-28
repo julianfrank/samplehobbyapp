@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-defineProps<{ websocketurl: string }>();
+interface Props {
+  websocketurl?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  websocketurl: "http://localhost:8088",
+});
 
 const x = ref(Math.round(Math.random() * 100)),
   y = ref(Math.round(Math.random() * 10)),

@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-defineProps<{ resturl: string }>();
+interface Props {
+  resturl?: string;
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  resturl: "http://localhost:8443",
+});
 
 const x = ref(Math.round(Math.random() * 100)),
   y = ref(Math.round(Math.random() * 10)),
@@ -34,7 +40,7 @@ code {
   color: #304455;
 }
 
-input{
+input {
   width: 3em;
 }
 </style>
