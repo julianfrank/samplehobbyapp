@@ -1,4 +1,13 @@
-<script setup lang="ts">
+<template>
+  <h2>resturl:{{ resturl }}</h2>
+  <div>x:<input type="number" :value="x" /></div>
+  <div>y:<input type="number" :value="y" /></div>
+  <h3>z:{{ z }}</h3>
+  <button type="button" @click="add">Add</button>
+  <button type="button" @click="z = x - y">Subtract</button>
+</template>
+
+<script setup="props" lang="ts">
 import { ref } from "vue";
 
 interface Props {
@@ -12,16 +21,33 @@ const props = withDefaults(defineProps<Props>(), {
 const x = ref(Math.round(Math.random() * 100)),
   y = ref(Math.round(Math.random() * 10)),
   z = ref(0);
-</script>
 
-<template>
-  <h2>resturl:{{ resturl }}</h2>
-  <div>x:<input type="number" :value="x" /></div>
-  <div>y:<input type="number" :value="y" /></div>
-  <h3>z:{{ z }}</h3>
-  <button type="button" @click="z = x + y">Add</button>
-  <button type="button" @click="z = x - y">Subtract</button>
-</template>
+function add() {
+  const headersList = {
+      Accept: "*/*",
+      "User-Agent": "Thunder Client (https://www.thunderclient.io)",
+    },
+    req = new Request(`${props.resturl}/add?x=${x.value}&y=${y.value}`, {
+      method: "GET", // *GET, POST, PUT, DELETE, etc.
+      mode: "no-cors", // no-cors, *cors, same-origin
+      //cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      //credentials: "omit", // include, *same-origin, omit
+      headers: headersList,
+      redirect: "follow", // manual, *follow, error
+      //referrerPolicy: "same-origin", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      //body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+  console.log(`Function add() => ${req.url}`, req);
+
+  fetch(req)
+    .then((res) => {
+      if (!res.ok) console.error(res);
+      return res.json();
+    })
+    .then((res) => (z.value = res.z))
+    .catch((err) => console.error(err));
+}
+</script>
 
 <style scoped>
 a {

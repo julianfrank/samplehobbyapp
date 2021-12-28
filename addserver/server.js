@@ -8,7 +8,7 @@ app.get("/", function (req, res) {
 });
 
 app.post("/add", function (req, res) {
-  console.log(req.query);
+  console.log(`ADD server got `,req.query);
   const { x, y } = req.query;
   const z = Number(x) + Number(y);
   res.json({ x, y, z });

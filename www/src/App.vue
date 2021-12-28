@@ -12,7 +12,7 @@ const RESTURL = service_discovery.dev.api,
 
 <template>
   <h1>Sample Hobby App</h1>
-  <RESTVue :resturl=RESTURL />
+  <RESTVue :resturl="RESTURL" />
   <WebSocketVue :websocketurl="WEBSOCKETURL" />
   <p>Origin: {{ o }}</p>
   <p>

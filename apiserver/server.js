@@ -14,13 +14,13 @@ app.all("/add", function (req, res) {
   //console.log(req.query);
   const { x, y } = req.query;
   console.log(
-    `Trying to ADD x=${x} + y=${y} using ${hostname}:${port}${pathname}`
+    `API Server Trying to ADD x=${x} + y=${y} using ${protocol}${hostname}:${port}${pathname}`
   );
 
   axios
     .post(`${service_discovery.dev.add}/add?x=${x}&y=${y}`)
     .then((response) => {
-      console.log(response.data);
+      console.log(`API server got `,response.data);
       res.json(response.data);
     })
     .catch((error) => {
