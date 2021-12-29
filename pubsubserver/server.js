@@ -30,9 +30,10 @@ io.on("connection", (socket) => {
   socket.on("disconnect", (reason) =>
     console.log(`user with id:${socket.id} disconnected with reason:${reason}`)
   );
-  socket.on("add",(...args)=>{
-    console.log(args)
-  })
+  socket.on("CLOCK", (clockReading) => {
+    console.log(clockReading);
+    io.emit("CLOCK", clockReading);
+  });
 });
 
 app.get("/", function (req, res) {

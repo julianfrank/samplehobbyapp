@@ -12,6 +12,6 @@
   "author": "Julian Frank",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "socket.io-client": "^4.4.0"
   }
 }

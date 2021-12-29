@@ -1,3 +1,15 @@
+<template>
+  <h2>websocketurl:{{ websocketurl }}</h2>
+  <h3 v-if="sioConnected">socket ID:{{ sioID }}</h3>
+  <h3>Clock:{{ clock }}</h3>
+  <div>x:<input type="number" :value="x" /></div>
+  <div>y:<input type="number" :value="y" /></div>
+  <h3>z:{{ z }}</h3>
+  <button type="button" @click="z = x + y">Add</button>
+  <button type="button" @click="z = x - y">Subtract</button>
+</template>
+
+
 <script setup lang="ts">
 import { reactive, readonly, ref } from "vue";
 import { io } from "socket.io-client";
@@ -9,7 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
   websocketurl: "http://localhost:8088",
 });
 
-const x = ref(Math.round(Math.random() * 100)),
+let x = ref(Math.round(Math.random() * 100)),
   y = ref(Math.round(Math.random() * 10)),
   z = ref(0),
   clock = ref(new Date());
@@ -36,19 +48,11 @@ socket.on("connect", () => {
     // revert to classic upgrade
     socket.io.opts.transports = ["polling", "websocket"];
   });
+
+  socket.on("CLOCK", (clockReading) => (clock.value = clockReading));
 });
 </script>
 
-<template>
-  <h2>websocketurl:{{ websocketurl }}</h2>
-  <h3 v-if="sioConnected">socket ID:{{ sioID }}</h3>
-  <h3>Clock:{{ clock }}</h3>
-  <div>x:<input type="number" :value="x" /></div>
-  <div>y:<input type="number" :value="y" /></div>
-  <h3>z:{{ z }}</h3>
-  <button type="button" @click="z = x + y">Add</button>
-  <button type="button" @click="z = x - y">Subtract</button>
-</template>
 
 <style scoped>
 * {
