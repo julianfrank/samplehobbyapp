@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { io } from "socket.io-client";
 
 interface Props {
   websocketurl?: string;
 }
-
 const props = withDefaults(defineProps<Props>(), {
   websocketurl: "http://localhost:8088",
 });
@@ -13,6 +13,12 @@ const x = ref(Math.round(Math.random() * 100)),
   y = ref(Math.round(Math.random() * 10)),
   z = ref(0),
   clock = ref(new Date());
+
+let socket = io(props.websocketurl);
+
+socket.on("connect", () => {
+  console.log(socket.id); // "G5p5..."
+});
 </script>
 
 <template>
@@ -26,7 +32,6 @@ const x = ref(Math.round(Math.random() * 100)),
 </template>
 
 <style scoped>
-
 * {
   background-color: cadetblue;
 }
