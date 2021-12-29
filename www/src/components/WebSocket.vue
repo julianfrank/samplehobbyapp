@@ -26,6 +26,11 @@ const x = ref(Math.round(Math.random() * 100)),
 </template>
 
 <style scoped>
+
+* {
+  background-color: cadetblue;
+}
+
 a {
   color: #42b983;
 }

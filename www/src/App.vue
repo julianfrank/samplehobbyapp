@@ -28,5 +28,6 @@ const RESTURL = service_discovery.dev.api,
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  background-color: lightgoldenrodyellow;
 }
 </style>
