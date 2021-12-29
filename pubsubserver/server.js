@@ -27,9 +27,12 @@ app.use(cors(corsOptions));
 
 io.on("connection", (socket) => {
   console.log(`a user with id:${socket.id} connected`);
-  socket.on("disconnect", (reason) => {
-    console.log(`user with id:${socket.id} disconnected with reason:${reason}`);
-  });
+  socket.on("disconnect", (reason) =>
+    console.log(`user with id:${socket.id} disconnected with reason:${reason}`)
+  );
+  socket.on("add",(...args)=>{
+    console.log(args)
+  })
 });
 
 app.get("/", function (req, res) {

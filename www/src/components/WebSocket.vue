@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { reactive, readonly, ref } from "vue";
 import { io } from "socket.io-client";
 
 interface Props {
@@ -14,15 +14,34 @@ const x = ref(Math.round(Math.random() * 100)),
   z = ref(0),
   clock = ref(new Date());
 
-let socket = io(props.websocketurl);
+let socket = io(props.websocketurl, { transports: ["websocket", "polling"] }),
+  sioConnected = ref(false),
+  sioID = ref("");
 
 socket.on("connect", () => {
-  console.log(socket.id); // "G5p5..."
+  sioConnected.value = true;
+  sioID.value = socket.id;
+  console.log(`WebSocket.vue\tSocket with ID:${socket.id} Connected`);
+  socket.on("disconnect", (reason) => {
+    sioConnected.value = false;
+    console.log(
+      `WebSocket.vue\tSocket with ID:${socket.id} Disconnected with reason:${reason}`
+    );
+  });
+  socket.on("connect_error", (err) => {
+    console.log(
+      `WebSocket.vue\tConnect Error, Reverting to original connect policy`,
+      err
+    );
+    // revert to classic upgrade
+    socket.io.opts.transports = ["polling", "websocket"];
+  });
 });
 </script>
 
 <template>
   <h2>websocketurl:{{ websocketurl }}</h2>
+  <h3 v-if="sioConnected">socket ID:{{ sioID }}</h3>
   <h3>Clock:{{ clock }}</h3>
   <div>x:<input type="number" :value="x" /></div>
   <div>y:<input type="number" :value="y" /></div>
