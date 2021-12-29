@@ -13,6 +13,6 @@ export default defineConfig({
     port: 8080,
     strictPort: true,
     https: true,
-    open: `/index.html`,
+    open: `/index.html`
   },
 });

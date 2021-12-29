@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+
 function addserver {
     cd addserver
     npm run start
