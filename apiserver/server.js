@@ -11,7 +11,7 @@ const app = express(),
     optionsSuccessStatus: 200,
   };
 
-console.log("API Server CORS", corsOptions);
+console.log("API Server\tCORS", corsOptions);
 
 app.all("/", function (req, res) {
   res.json(service_discovery);
@@ -20,16 +20,16 @@ app.all("/add", cors(corsOptions), function (req, res) {
   const { port, hostname, pathname, protocol } = new URL(
     service_discovery.dev.add
   );
-  //console.log(req.query);
+  //console.log(`API Server\treq.query:`,req.query);
   const { x, y } = req.query;
   console.log(
-    `API Server Trying to ADD x=${x} + y=${y} using ${protocol}${hostname}:${port}${pathname}`
+    `API Server\tTrying to ADD x=${x} + y=${y} using ${protocol}${hostname}:${port}${pathname}`
   );
 
   axios
     .post(`${service_discovery.dev.add}/add?x=${x}&y=${y}`)
     .then((response) => {
-      console.log(`API server got `, response.data);
+      console.log(`API server\tresponse.data:`, response.data);
       res.json(response.data);
     })
     .catch((error) => {
@@ -41,16 +41,16 @@ app.all("/sub", cors(corsOptions), function (req, res) {
   const { port, hostname, pathname, protocol } = new URL(
     service_discovery.dev.sub
   );
-  //console.log(req.query);
+  //console.log(`API Server\treq.query:`,req.query);
   const { x, y } = req.query;
   console.log(
-    `API Server Trying to SUBTRACT x=${x} - y=${y} using ${protocol}${hostname}:${port}${pathname}`
+    `API Server\tTrying to SUBTRACT x=${x} - y=${y} using ${protocol}${hostname}:${port}${pathname}`
   );
 
   axios
     .post(`${service_discovery.dev.sub}/sub?x=${x}&y=${y}`)
     .then((response) => {
-      console.log(`API server got `, response.data);
+      console.log(`API server\tresponse.data:`, response.data);
       res.json(response.data);
     })
     .catch((error) => {
@@ -59,4 +59,4 @@ app.all("/sub", cors(corsOptions), function (req, res) {
     });
 });
 
-app.listen(PORT, () => console.log(`API Server running on ${PORT}`));
+app.listen(PORT, () => console.log(`API Server\tRunning on ${PORT}`));

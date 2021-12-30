@@ -1,15 +1,15 @@
 const service_discovery = require("../service_discovery.json"),
-  io = require("socket.io-client"),
-  PUBSUBURL = service_discovery.dev.pubsub;
+  io = require("socket.io-client")
+  const PUBSUBURL = service_discovery.dev.pubsub,socket = io(PUBSUBURL, { transports: ["websocket", "polling"] });
 
 console.log(`Clock Server\tTrying to connect to PUBSUBURL:${PUBSUBURL}`);
-const socket = io(PUBSUBURL, { transports: ["websocket", "polling"] });
+
 socket.on("connect", () => {
   console.log(`Clock Server\tSocket with ID:${socket.id} Connected`);
 
   let clockFunc = setInterval(() => {
     socket.emit("CLOCK", new Date());
-  }, 1234);
+  }, 4321);
 
   socket.on("disconnect", (reason) => {
     console.log(

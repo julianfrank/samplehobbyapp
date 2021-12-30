@@ -5,13 +5,12 @@
   <div>x:<input type="number" :value="x" /></div>
   <div>y:<input type="number" :value="y" /></div>
   <h3>z:{{ z }}</h3>
-  <button type="button" @click="z = x + y">Add</button>
-  <button type="button" @click="z = x - y">Subtract</button>
+  <button type="button" @click="add">Add</button>
+  <button type="button" @click="sub">Subtract</button>
 </template>
 
-
 <script setup lang="ts">
-import { reactive, readonly, ref } from "vue";
+import { ref } from "vue";
 import { io } from "socket.io-client";
 
 interface Props {
@@ -48,11 +47,39 @@ socket.on("connect", () => {
     // revert to classic upgrade
     socket.io.opts.transports = ["polling", "websocket"];
   });
+  socket.on("ADDRESULT", (res) => {
+    x.value = res.x;
+    y.value = res.y;
+    z.value = res.z;
+  });
+  socket.on("SUBRESULT", (res) => {
+    x.value = res.x;
+    y.value = res.y;
+    z.value = res.z;
+  });
+  socket.onAny((eventDetails, ...args) => {
+    console.log(`WebSocket.vue\tEvent ${eventDetails}`, args);
+  });
 
   socket.on("CLOCK", (clockReading) => (clock.value = clockReading));
 });
-</script>
 
+function add() {
+  if (socket.connected) {
+    socket.emit("ADD", x.value, y.value);
+  } else {
+    console.log(`WebSocket.vue\tSocket not connected`);
+  }
+}
+
+function sub() {
+  if (socket.connected) {
+    socket.emit("SUB", x.value, y.value);
+  } else {
+    console.log(`WebSocket.vue\tSocket not connected`);
+  }
+}
+</script>
 
 <style scoped>
 * {

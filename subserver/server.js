@@ -8,10 +8,10 @@ app.get("/", function (req, res) {
 });
 
 app.post("/sub", function (req, res) {
-  console.log(`SUB server got `, req.query);
+  console.log(`SUB server\treq.query`, req.query);
   const { x, y } = req.query;
   const z = Number(x) - Number(y);
   res.json({ x, y, z });
 });
 
-app.listen(PORT, () => console.log(`SUBTRACT Server running on ${PORT}`));
+app.listen(PORT, () => console.log(`SUB Server\tunning on ${PORT}`));

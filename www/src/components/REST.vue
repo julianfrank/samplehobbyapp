@@ -13,7 +13,6 @@ import { ref } from "vue";
 interface Props {
   resturl?: string;
 }
-
 const props = withDefaults(defineProps<Props>(), {
   resturl: "http://localhost:8443",
 });
@@ -78,7 +77,7 @@ function sub() {
 
 <style scoped>
 * {
-  background-color: aquamarine;
+  background-color: aqua;
 }
 a {
   color: #42b983;
