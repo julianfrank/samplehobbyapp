@@ -1,7 +1,7 @@
 <template>
   <h2>resturl:{{ resturl }}</h2>
-  <div>x:<input type="number" :value="x" /></div>
-  <div>y:<input type="number" :value="y" /></div>
+  <div>x:<input type="number" v-model="x" /></div>
+  <div>y:<input type="number" v-model="y" /></div>
   <h3>z:{{ z }}</h3>
   <button type="button" @click="add">Add</button>
   <button type="button" @click="sub">Subtract</button>
@@ -77,7 +77,8 @@ function sub() {
 
 <style scoped>
 * {
-  background-color: aqua;
+  background-color: blue;
+  color: white;
 }
 a {
   color: #42b983;

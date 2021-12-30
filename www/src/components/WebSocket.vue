@@ -2,8 +2,8 @@
   <h2>websocketurl:{{ websocketurl }}</h2>
   <h3 v-if="sioConnected">socket ID:{{ sioID }}</h3>
   <h3>Clock:{{ clock }}</h3>
-  <div>x:<input type="number" :value="x" /></div>
-  <div>y:<input type="number" :value="y" /></div>
+  <div>x:<input type="number" v-model="x" /></div>
+  <div>y:<input type="number" v-model="y" /></div>
   <h3>z:{{ z }}</h3>
   <button type="button" @click="add">Add</button>
   <button type="button" @click="sub">Subtract</button>
@@ -83,7 +83,8 @@ function sub() {
 
 <style scoped>
 * {
-  background-color: cadetblue;
+  background-color: green;
+  color: white;
 }
 
 a {
