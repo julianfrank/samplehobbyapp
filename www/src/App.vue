@@ -11,7 +11,6 @@
   </pre>
 </template>
 
-
 <script setup lang="ts">
 import RESTVue from "./components/REST.vue";
 import WebSocketVue from "./components/WebSocket.vue";
@@ -23,7 +22,6 @@ const o = window.origin,
 const RESTURL = service_discovery[app_env].api,
   WEBSOCKETURL = service_discovery[app_env].pubsub;
 </script>
-
 
 <style>
 #app {
